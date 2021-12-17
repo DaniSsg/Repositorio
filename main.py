@@ -6,6 +6,7 @@ dashboard= meraki.DashboardAPI(API_key)
 
 response= dashboard.organizations.getOrganizations()
 
+
 print(response)
 
 
@@ -30,6 +31,7 @@ headers = {
 
 response = requests.request('GET', url, headers=headers, data = payload)
 print(response.text.encode('utf8'))
+print(response.raise_for_status())
 
 
 with open('names.csv', 'a+', newline='') as csvfile:
@@ -65,7 +67,7 @@ headers = {
 
 response = requests.request('GET', url, headers=headers, data = payload)
 print(response.text.encode('utf8'))
-
+print(response.raise_for_status())
 
 with open('names.csv', 'a+', newline='') as csvfile:
    fieldnames = ['TIPO','MODELO_EQUIPO','NOMBRE','DIRECCION_MAC','DIRECCION_LAN','SERIAL','STADTUS']
@@ -106,12 +108,6 @@ with open('names.csv', 'a+', newline='') as csvfile:
 
 
    writer.writerow({'TIPO':'wireless','MODELO_EQUIPO':'MR52','NOMBRE':'Office AP','DIRECCION_MAC':'e0:55:3d:c0:72:d8','DIRECCION_LAN':'192.168.128.16','SERIAL':'Q2LD-ZWCZ-UA77','STADTUS':'021-12-02T22:10:43Z'})
-
-
-
-
-
-
 
 
 
